@@ -1,2 +1,1 @@
-Miscellaneous items can be placed here
-
+Any miscellaneous items required for projects are located here.

@@ -4,6 +4,8 @@ import os
 import time
 import datetime
 
+# code to read in date/temp information collected by pi temperature sensor
+
 try:
     db = sqlite3.connect('/home/pi/ELSpring2018/WebAssignment/myTemps.db')
 except Error as e:

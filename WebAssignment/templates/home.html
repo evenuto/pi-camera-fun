@@ -1,11 +1,16 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
    <body>
 
      <form action="/list"> 
-       <div>
-         <input type="submit" value="Submit request">
-       </div>
+       Select date and time range (please note current data only ranges
+         from 03/04/18 to 03/05/18)
+       <input id="start" type="date" name="start" 
+              min="2018-03-04" max="2018-03-05">
+       -
+       <input id="end" type="date" name="end"
+              min="2018-03-04" max="2018-03-05"><br> 
+       <input type="submit" value="Submit request">
      </form>       
 
    </body>

@@ -1,2 +1,1 @@
-This folder will hold all documentation related to the projects.
-
+Initial Progress Report of the Project

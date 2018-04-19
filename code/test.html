@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+{% block title %}Take Pic{% endblock %}
+{% block head %}
+  {{ super() }}
+  <!--
+  <script type="text/javascript">
+  function showValue(num){
+           var result = document.getElementById('result');
+           result.innerHTML = num;
+  }
+  </script>
+  -->
+{% endblock %}
+
+
+{% block body %}
+
+<div class="block1">
+
+
+
+<p>Use this slider bar to rotate the camera horizontally.</p>
+<input type="range" id="sliderBar1" min="0" max="100" step="1" 
+   value="0"/>
+
+<!--
+ <input type="range" id="sliderBar1" min="0" max="100" step="1" 
+   value="0" onChange="showValue(this.value);"/>
+<div id="result" style="height:40px;width:40px;border:1px solid #999">
+-->
+<p>When you are happy with the camera location, 
+click this button to capture an image!</p>
+<a href="/takePic">Capture an image</a><br><br>
+<!--<img src = "{{url_for('static',filename='output.jpg')}}" height="100" width="100"> 
+-->
+<a href="/showPics">View all pics taken so far</a>
+
+</div>
+{% endblock %}
+
+
+

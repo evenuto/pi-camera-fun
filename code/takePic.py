@@ -4,7 +4,7 @@ import os
 import sqlite3
 import time
 import datetime
-from flask import Flask, render_template, Response, url_for
+from flask import Flask, render_template, Response, url_for, request
 import picamera 
 
 app = Flask(__name__)
@@ -17,45 +17,44 @@ def main():
 def takePic():
     # connect to picture database
     try:
-        db = sqlite3.connect('/home/pi/camApp/pics.db')
-    except Error as e:
-        print(e)
- 
-    cursor = db.cursor()
-    currentTime=time.strftime('%x %X %Z') 
+        db = sqlite3.connect('/home/pi/ELSpring2018/code/pics.db')
+        cursor = db.cursor()
+        currentTime=time.strftime('%x %X %Z') 
 
-    # take new photo
-    camera = picamera.PiCamera()
-    pic = camera.capture('static/pic1.jpg')
+        # take new photo
+        camera = picamera.PiCamera()
+        pic = camera.capture('static/pic1.jpg')
 
-    # store new photo in database
-    cursor.execute('''INSERT INTO pics(picPath, datetime)
+        # store new photo in database
+        cursor.execute('''INSERT INTO pics(picPath, datetime)
                   VALUES(?,?)''', (picPath, currentTime))
-    db.commit()
-    db.close()
+        db.commit()
+
+    except Exception as e:
+        db.rollback()
+        raise e
+    finally:
+        db.close()
 
     return render_template('test.html')
 
 # method to display all pics taken so far
 @app.route("/showPics", methods=['POST'])
 def showPics():
-    #if request.method == 'POST':
-     #   try:
-      #      db = sqlite3.connect('/home/pi/camApp/pics.db')
-       # except Error as e:
-        #    print(e)
+    if request.method == 'POST':
+        try:
+            db = sqlite3.connect('/home/pi/ELSpring2018/code/pics.db')
+            cursor = db.cursor()
+            db.row_factory = sql.Row
+            cur.execute('''SELECT * FROM pics''')
+            rows = cur.fetchall();
+            return render_template('showPics.html',rows=rows)
 
-      #  cursor = db.cursor()
-       # db.row_factory = sql.Row
-       # cur.execute('''SELECT * FROM pics''')
-
-        # might need a different piece of code to render images...
-       # rows = cur.fetchall();
-       # return render_template('showPics.html',rows=rows)
-    return render_template('showPics.html')
-
-#    db.close()
-
+        except Exception as e:
+            db.rollback()
+            raise e
+        finally:
+            db.close()
  
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=8080, debug=True)

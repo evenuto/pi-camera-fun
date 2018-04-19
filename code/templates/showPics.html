@@ -8,10 +8,20 @@
 {% block body %}
 
 <div class="block1">
-
-
-
 <p>View all pics taken so far.</p>
+
+<table>
+  {% for row in rows %}
+    <tr>
+      <td>{{row["picPath"]}}</td>
+      <td>{{row["datetime"]}}</td>
+    </tr>
+  {% endfor %}
+</table>
+
+
+
+
 </div>
 {% endblock %}
 

@@ -1,6 +1,5 @@
 import sqlite3 
 
-db = sqlite3.connect(
 try:
     # Creates or opens a file called pics with a SQLite3 DB
     db = sqlite3.connect('/home/pi/ELSpring2018/code/pics.db')

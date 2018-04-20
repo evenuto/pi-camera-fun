@@ -1,6 +1,4 @@
 #!/usr/bin/env python
-from importlib import import_module
-import os
 import sqlite3
 import time
 import datetime
@@ -23,8 +21,8 @@ def takePic():
 
         # take new photo
         camera = picamera.PiCamera()
-        pic = camera.capture('static/pic1.jpg')
-
+        pic = camera.capture('static/pic3.jpg')
+        picPath = "static/pic3.jpg"
         # store new photo in database
         cursor.execute('''INSERT INTO pics(picPath, datetime)
                   VALUES(?,?)''', (picPath, currentTime))
@@ -39,22 +37,16 @@ def takePic():
     return render_template('test.html')
 
 # method to display all pics taken so far
-@app.route("/showPics", methods=['POST'])
+@app.route("/showPics")
 def showPics():
-    if request.method == 'POST':
-        try:
-            db = sqlite3.connect('/home/pi/ELSpring2018/code/pics.db')
-            cursor = db.cursor()
-            db.row_factory = sql.Row
-            cur.execute('''SELECT * FROM pics''')
-            rows = cur.fetchall();
-            return render_template('showPics.html',rows=rows)
-
-        except Exception as e:
-            db.rollback()
-            raise e
-        finally:
-            db.close()
+   # if request.method == 'POST':
+        db = sqlite3.connect('/home/pi/ELSpring2018/code/pics.db')
+        db.row_factory = sqlite3.Row
+        cursor = db.cursor()
+        cursor.execute('''SELECT * FROM pics''')
+        rows = cursor.fetchall();
+        db.close()
+        return render_template('showPics.html',rows = rows)
  
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=8080, debug=True)

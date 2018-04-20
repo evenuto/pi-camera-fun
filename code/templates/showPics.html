@@ -1,16 +1,16 @@
 % extends "layout.html" %}
 {% block title %}Show Pics{% endblock %}
-{% block head %}
-  {{ super() }}
-{% endblock %}
-
 
 {% block body %}
 
 <div class="block1">
 <p>View all pics taken so far.</p>
 
-<table>
+<table border = 1>
+  <thead>
+            <td>picPath</td>
+            <td>datetime</td>
+  </thead>
   {% for row in rows %}
     <tr>
       <td>{{row["picPath"]}}</td>
@@ -18,9 +18,6 @@
     </tr>
   {% endfor %}
 </table>
-
-
-
 
 </div>
 {% endblock %}

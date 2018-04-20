@@ -1,4 +1,4 @@
-% extends "layout.html" %}
+{% extends "layout.html" %}
 {% block title %}Show Pics{% endblock %}
 
 {% block body %}
@@ -6,14 +6,10 @@
 <div class="block1">
 <p>View all pics taken so far.</p>
 
-<table border = 1>
-  <thead>
-            <td>picPath</td>
-            <td>datetime</td>
-  </thead>
+<table>
   {% for row in rows %}
     <tr>
-      <td>{{row["picPath"]}}</td>
+      <td><img src="{{ url_for('static', filename='') }}{{ row["picPath"] }}" height="100" width="100"></td>
       <td>{{row["datetime"]}}</td>
     </tr>
   {% endfor %}
@@ -21,8 +17,4 @@
 
 </div>
 {% endblock %}
-
-
-
-
 

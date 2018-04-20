@@ -23,6 +23,7 @@ def takePic():
         camera = picamera.PiCamera()
         timeTaken = time.strftime("%Y%m%d-%H%M%S")
         pic = camera.capture('static/'+timeTaken+'.jpg')
+        camera.close()
         picPath = timeTaken+".jpg"
         # store new photo in database
         cursor.execute('''INSERT INTO pics(picPath, datetime)

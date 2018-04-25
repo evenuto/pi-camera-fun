@@ -2,14 +2,6 @@
 {% block title %}Take Pic{% endblock %}
 {% block head %}
   {{ super() }}
-  <!--
-  <script type="text/javascript">
-  function showValue(num){
-           var result = document.getElementById('result');
-           result.innerHTML = num;
-  }
-  </script>
-  -->
 {% endblock %}
 
 
@@ -17,23 +9,31 @@
 
 <div class="block1">
 
-
-
-<p>Use this slider bar to rotate the camera horizontally.</p>
-<input type="range" id="sliderBar1" min="0" max="100" step="1" 
-   value="0"/>
+<p>Enter a value to move servo</p>
+<a href="{{ url_for('moveServo') }}">MoveServo</a>
 
 <!--
- <input type="range" id="sliderBar1" min="0" max="100" step="1" 
-   value="0" onChange="showValue(this.value);"/>
-<div id="result" style="height:40px;width:40px;border:1px solid #999">
+<form action="/moveServo">
+Pan:
+<input type="number" name="pan">
+Tilt:
+<input type="number" name="tilt">
+</form>
 -->
 <p>When you are happy with the camera location, 
 click this button to capture an image!</p>
-<a href="{{ url_for('takePic') }}"">Capture an image</a><br><br>
+<a href="{{ url_for('takePic') }}" onClick="success()" >Capture an image</a><br><br>
 <a href="{{ url_for('showPics') }}">View all pics taken so far</a>
 
 </div>
+
+<script type="text/javascript">
+function success() {
+  var message = "Picture taken successfully";
+  alert(message);
+}
+</script>
+
 {% endblock %}
 
 

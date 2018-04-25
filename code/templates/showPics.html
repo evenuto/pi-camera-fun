@@ -11,6 +11,14 @@
     <tr>
       <td><img src="{{ url_for('static', filename='') }}{{ row["picPath"] }}" height="100" width="100"></td>
       <td>{{row["datetime"]}}</td>
+      <td>
+        <a href="removePic/{{ row["picPath"] }}">Remove</a>
+
+        <!--<form action="/removePic" method="POST">
+          <input type="hidden" value="{{ row["picPath"] }}"/>
+          <button id="delete">Remove</button>
+        </form>-->
+      </td>
     </tr>
   {% endfor %}
 </table>

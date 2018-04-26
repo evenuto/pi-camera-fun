@@ -7,30 +7,22 @@ import picamera
 import RPi.GPIO as GPIO
 app = Flask(__name__)
 
-@app.route("/<direction>")
-def moveServo(direction):
+@app.route("/<p>/<a>")
+def moveServo(p, a):
     GPIO.setmode(GPIO.BOARD)
-    if direction == "right":
-        currentPin = int(11)
-        myAngle = int(180)
-    if direction == "left":
-        currentPin = int(11)
-        myAngle = int(0)
-    if direction == "down":
-        currentPin = int(7)
-        myAngle = int(180)
-    if direction == "up":
-        currentPin = int(7)
-        myAngle = int(0)
-
-    GPIO.setup(currentPin,GPIO.OUT)
-    pwm=GPIO.PWM(currentPin,50)
-    pwm.start(7)
+    pin = int(p)
+    GPIO.setup(pin,GPIO.OUT)
+    pwm=GPIO.PWM(pin,50)
+    pwm.start(0)
 
     # formula to determine proper duty cycle
-    dc = 1./20.*(myAngle)+2
-    pwm.ChangeDutyCycle(dc)
-    #time.sleep(0.3)
+    angle = int(a)
+    dc = 1/18*(angle)+2
+    GPIO.output(pin,True)
+    pwm.ChangeDutyCycle(12)
+    time.sleep(1)
+    GPIO.output(pin,False)
+    #pwm.ChangeDutyCycle(0)
     pwm.stop()
     GPIO.cleanup()
     return render_template('test.html')

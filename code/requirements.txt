@@ -1,0 +1,6 @@
+Python==3.5.3
+Flask==0.12.1
+sqlite3
+flask
+picamera
+RPi.GPIO

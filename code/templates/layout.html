@@ -2,7 +2,11 @@
 <head>
     {% block head %}
     <title>{% block title %}{% endblock %}</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <style>
 @import url(http://fonts.googleapis.com/css?family=Amatic+SC:700);
  
@@ -13,7 +17,7 @@ h1{
     font-family: 'Amatic SC', cursive;
     font-weight: normal;
     color: #8ac640;
-    font-size: 2.5em;
+    font-size: 3.5em;
 }
  
 </style>
@@ -21,7 +25,14 @@ h1{
  
 </head>
 <body>
+
  {% block body %}{% endblock %}
- 
+ <br><br>
 </body>
+
+<footer style="text-align: left">
+  <p>Created by: Emily Venuto, Philip Leung</p>
+  <p>SUNY New Paltz, Embedded Linux, Spring 2018</p>
+</footer>
+
 </html>

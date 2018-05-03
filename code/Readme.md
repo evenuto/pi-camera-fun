@@ -7,7 +7,7 @@ HARDWARE Requirements:
 
 SOFTWARE
    1. Clone git repo
-   2. run 'pip install -r requirements.txt' to get all requirements
+   2. install all system and python requirements noted in requirements.txt
    3. enable the pi camera
    4. Setup:
       - cd to your working project directory

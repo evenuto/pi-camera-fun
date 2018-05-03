@@ -1,4 +1,4 @@
-'{% extends "layout.html" %}
+{% extends "layout.html" %}
 {% block title %}Show Pics{% endblock %}
 
 {% block body %}
@@ -12,6 +12,8 @@
       <div class="col-sm-4"><img src="{{ url_for('static', filename='') }}{{ row["picPath"] }}" height="100" width="100">
       <br>
       {{row["datetime"]}}
+      <br>
+      <a href="{{ url_for('showPics') }}/{{ row["picPath"] }}">Remove</a>
       <hr>  
     </div> 
     {% endfor %}

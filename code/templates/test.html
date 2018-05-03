@@ -22,14 +22,25 @@
     <td colspan="2" style="text-align:center">
       <hr>
       <h3>Move the servos:</h3>
-      <div class="container">
-        <div class="btn-group">
-              <input type="button" class="btn btn-primary" onClick="location.href='/11/0'" value="Left">
-              <input type="button" class="btn btn-primary" onClick="location.href='/11/180'" value="Right">
-              <input type="button" class="btn btn-primary" onClick="location.href='/7/0'" value="Up">
-              <input type="button" class="btn btn-primary" onClick="location.href='/7/180'" value="Down">
-        </div>
-      </div>
+      <table align="center" class="style1">
+		<tr>
+		<td colspan="2" style="text-align:center">
+		     <h4> PAN Angle: <a href="/pan/-"class="button">-</a> [ {{ panServoAngle }} ] <a href="/pan/+"class="button">+</a></h4>
+                     <hr>
+		</td>
+                 
+		</tr>
+		<tr>
+                <td colspan="2" style="text-align:center">
+                     <h4> TILT Angle: <a href="/tilt/-"class="button">-</a> [ {{ tiltServoAngle }} ] <a href="/tilt/+"class="button">+</a></h4>
+		     <hr>
+                 
+                 </td>
+               </tr>
+	
+	</table>	
+
+
       <hr>
     </td>
   </tr>

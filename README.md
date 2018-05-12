@@ -30,5 +30,5 @@ Philip Leung (50% of the work):
 - Wire the pi-servo mechanism
 
 __Usability__  
-If you wish to re-create this project, you will be able to do so by following the instructions in the README.md in the doc directory.
+If you wish to re-create this project, you will be able to do so by following the instructions in the README.md in the code directory.
 

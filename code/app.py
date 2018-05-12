@@ -20,7 +20,7 @@ tiltPin = 4 #pin number for connecting tilt servo to gpio board
 #renders the main template for viewing
 @app.route("/", methods=['GET','POST'])
 def main():
-    return render_template('test.html')
+    return render_template('index.html')
 
 #move the servos
 @app.route("/<servo>/<angle>")
@@ -45,7 +45,7 @@ def move(servo, angle):
                     'panServoAngle' : panServoAngle,
                     'tiltServoAngle' : tiltServoAngle
         }
-        return render_template('test.html',**templateData) 
+        return render_template('index.html',**templateData) 
 
 
 @app.route("/takePic", methods=['GET','POST'])
@@ -73,7 +73,7 @@ def takePic():
     finally:
         db.close()
 
-    return render_template('test.html')
+    return render_template('index.html')
 
 # method to display all pics taken so far
 @app.route("/showPics")

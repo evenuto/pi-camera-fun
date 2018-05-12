@@ -1,24 +1,28 @@
-#!/usr/bin/env python
-
+#!/usr/bin/env python3
 from time import sleep
 import RPi.GPIO as GPIO
 GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
 
-def setServoAngle(servo, angle):
-    assert angle >= 0 and angle <= 180
+#moves servo to right
+def setServoAngle(servo):
     pwm = GPIO.PWM(servo, 50)
-    pwm.start(8)
-    duty = angle / 18. + 3.
-    pwm.ChangeDutyCycle(duty)
-    sleep(0.3)
+    pwm.start(0)
+    pwm.ChangeDutyCycle(2)
+    sleep(0.1)
     pwm.stop()
-
 
 
 if __name__ == '__main__':
         import sys
         servo = int(sys.argv[1])
         GPIO.setup(servo, GPIO.OUT)
-        setServoAngle(servo, int(sys.argv[2]))
+        setServoAngle(servo)
         GPIO.cleanup()
+
+
+
+
+
+
+

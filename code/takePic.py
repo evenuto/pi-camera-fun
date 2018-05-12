@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 import os
 import atexit
 import sqlite3
@@ -29,21 +29,23 @@ def move(servo, angle):
         global tiltServoAngle
         if servo == 'pan':
             if angle == '+':
-                   panServoAngle = panServoAngle + 10
+                     panServoAngle = panServoAngle + 10
+                     os.system("python3 angleServo.py " + str(panPin))
             else:
                 panServoAngle = panServoAngle - 10
-            os.system("python angleServo.py " + str(panPin) + " " + str(panServoAngle))
+                os.system("python3 angleServo2.py " + str(panPin))
         if servo == 'tilt':
-               if angle == '+':
-                        tiltServoAngle = tiltServoAngle + 10
-               else:
-                    tiltServoAngle = tiltServoAngle - 10
-               os.system("python angleServo.py " + str(tiltPin) + " " + str(tiltServoAngle))
+              if angle == '+':
+                     tiltServoAngle = tiltServoAngle + 10
+                     os.system("python3 angleServo.py " + str(tiltPin))
+              else:
+                  tiltServoAngle = tiltServoAngle - 10
+                  os.system("python3 angleServo2.py " + str(tiltPin))
         templateData = {
-               'panServoAngle'   : panServoAngle,
-               'tiltServoAngle'  : tiltServoAngle
+                    'panServoAngle' : panServoAngle,
+                    'tiltServoAngle' : tiltServoAngle
         }
-        return render_template('test.html', **templateData)
+        return render_template('test.html',**templateData) 
 
 
 @app.route("/takePic", methods=['GET','POST'])

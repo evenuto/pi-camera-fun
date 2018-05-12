@@ -3,13 +3,19 @@
 
 {% block body %}
 
+<div class="container">
+  <div class="jumbotron" style="background-color:#00F3FF">
+    <h1>View all pics taken so far.</h1>
+  </div>
+</div>
+
+
 <div class="block1">
 <div class="container-fluid">
-  <h1>View all pics taken so far.</h1>
     <div class="row">
     {% for row in rows %}
 
-      <div class="col-sm-4"><img src="{{ url_for('static', filename='') }}{{ row["picPath"] }}" height="100" width="100">
+      <div class="col-sm-4"><img src="{{ url_for('static', filename='') }}{{ row["picPath"] }}" height="200" width="200">
       <br>
       {{row["datetime"]}}
       <br>
@@ -23,7 +29,7 @@
 
 </div>
 
-<input type="button" class="btn btn-primary" onClick="location.href='/'" value="Return to homepage">
+<input type="button" class="btn btn-primary" onClick="location.href='/'" value="Return to homepage"
+       style="background-color: black; text: white">
 
 {% endblock %}
-

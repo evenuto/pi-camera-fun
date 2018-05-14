@@ -5,7 +5,7 @@ HARDWARE Requirements:
 - Pi camera
 - pan tilt servo motor setup  
   ** As defined in 'app.py', the pan servo is connected to GPIO pin 17, and the tilt servo is connected to GPIO pin 4.
- If you chose to use another set of pins, these values must be changed in 'app.py'.
+ If you chose to use another set of pins, these values must be changed in 'app.py'. (The wiring diagram for the pi can be viewed in the README.md in the 'doc' directory.
 
 SOFTWARE Setup:  
    1. Clone git repo
